@@ -89,11 +89,11 @@ class Landlord implements Scope
             return;
         }
         
-        if(is_int($tenantId))
-        {
-            $tenantId = [$tenantId];
-        }
         foreach ($this->getModelTenants($model) as $tenantColumn => $tenantId) {
+            if (!is_array($tenantId))
+            {
+                $tenantId = [$tenantId];
+            }
             $builder->whereIn($model->getTable() . '.' . $tenantColumn, $tenantId);
         }
     }
