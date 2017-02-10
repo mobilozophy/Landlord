@@ -97,7 +97,6 @@ class Landlord implements Scope
             }
             
             $builder->whereIn($model->getTable() . '.' . $tenantColumn, $tenantId);
-            $builder->where($model->getTable() . '.' . $tenantColumn, '=', $tenantId);
         }
     }
 
