@@ -91,7 +91,7 @@ class Landlord implements Scope
 
         foreach ($this->getModelTenants($model) as $tenantColumn => $tenantId) {
          	
-         	if (!is_array($tenantId))
+            if (!is_array($tenantId))
             {
                 $tenantId = [$tenantId];
             }
@@ -120,7 +120,6 @@ class Landlord implements Scope
             {
                 $model->{$tenantColumn} = $tenantId;
             }
-            $model->{$tenantColumn} = $tenantId;
         }
     }
 
