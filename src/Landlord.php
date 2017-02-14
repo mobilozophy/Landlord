@@ -90,7 +90,13 @@ class Landlord implements Scope
         }
 
         foreach ($this->getModelTenants($model) as $tenantColumn => $tenantId) {
-            $builder->where($model->getTable() . '.' . $tenantColumn, '=', $tenantId);
+         	
+            if (!is_array($tenantId))
+            {
+                $tenantId = [$tenantId];
+            }
+            
+            $builder->whereIn($model->getTable() . '.' . $tenantColumn, $tenantId);
         }
     }
 
@@ -106,7 +112,14 @@ class Landlord implements Scope
 
         // Otherwise, scope the new model
         foreach ($this->getModelTenants($model) as $tenantColumn => $tenantId) {
-            $model->{$tenantColumn} = $tenantId;
+            if(is_array($tenantId))
+            {
+                $model->{$tenantColumn} = $tenantId[0];
+            }
+            else
+            {
+                $model->{$tenantColumn} = $tenantId;
+            }
         }
     }
 
