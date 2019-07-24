@@ -29,7 +29,7 @@
                 "HipsterJazzbo\\Landlord\\LandlordServiceProvider"
             ],
             "aliases": {
-                "Landlord": "HipsterJazzbo\\Landlord\\Facades\\Landlord"
+                "Landlord": "HipsterJazzbo\\Landlord\\Facades\\LandlordFacade"
             }
         }
     }
